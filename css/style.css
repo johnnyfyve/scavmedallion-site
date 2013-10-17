@@ -1029,7 +1029,7 @@
 	#header
 	{
 		position: relative;
-		background-image: url('../images/header.jpg');
+		background-image: url('../images/scam-bg.jpg');
 		background-size: cover;
 		background-position: center center;
 		background-attachment: fixed;
@@ -1133,6 +1133,11 @@
 			{
 				background: rgba(192,192,192,0.35);
 			}
+
+/*********************************************************************************/
+/* Logo                                                                         */
+/*********************************************************************************/
+	#logo {text-shadow:4px 4px 5px rgba(0,0,0,1)};
 
 /*********************************************************************************/
 /* Nav                                                                           */
