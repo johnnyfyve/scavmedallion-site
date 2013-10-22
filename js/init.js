@@ -60,7 +60,7 @@
 						navPanel: {
 							breakpoints: 'mobile',
 							position: 'top',
-							size: '45%',
+							size: '60%',
 							html: '<div data-action="navList" data-args="nav"></div>'
 						}
 					},

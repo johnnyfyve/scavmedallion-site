@@ -178,7 +178,7 @@
 			#navPanel .link.depth-0
 			{
 				color: #fff;
-				font-weight: 600;
+				/*font-weight: 600;*/
 			}
 
 			#navPanel .indent-1 { display: inline-block; width: 1em; }
