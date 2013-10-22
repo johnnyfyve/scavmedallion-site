@@ -1066,6 +1066,10 @@
 				opacity: 0;
 			}
 
+		.right-sidebar #header {
+			padding:4em 0 0 0;
+		}
+
 		#header .inner
 		{
 			position: relative;
@@ -1101,6 +1105,7 @@
 		
 		#header .button
 		{
+			/*
 			border-radius: 100%;
 			width: 4.5em;
 			height: 4.5em;
@@ -1108,6 +1113,10 @@
 			text-align: center;
 			font-size: 1.25em;
 			padding: 0;
+			*/
+		}
+		#header .subpage {
+
 		}
 		
 		#header header
