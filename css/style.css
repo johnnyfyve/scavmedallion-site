@@ -141,7 +141,7 @@
 
 	p
 	{
-		text-align: justify;
+		text-align: left;
 	}
 
 	br.clear
@@ -519,8 +519,8 @@
 		{
 			position: relative;
 			display: inline-block;
-			background: #e2c477;
-			color: #201b20;
+			background: #547f8c;
+			color: #fff;
 			text-align: center;
 			border-radius: 0.5em;
 			text-decoration: none;
