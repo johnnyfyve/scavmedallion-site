@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<!--
+	Helios 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Contact Us - The South Carolina Aviation Medallion</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--#include virtual="includes/head.html"-->
+		
+		<!-- local styles -->
+		<style type="text/css">
+		
+		</style>
+		
+		
+		<!-- local scripts -->
+		<script type="text/javascript">
+		
+		// *************************************
+		// *** Submit Form Actions
+		// *************************************
+		$(document).ready(function() {
+
+			// *** variable to hold request
+			var request;
+			var formValid = 0;
+			
+			// *** bind to the submit event of our form
+			$("#contactForm").submit(function(event){
+			
+				//alert('yo');
+			    // *** abort any pending request
+			    if (request) {
+			        request.abort();
+			        formValid = 0;
+			    }
+			    // *** local variables
+			    var $form = $(this);
+			    // *** select and cache all the fields
+			    var $inputs = $form.find("input, select, button, textarea");
+			   	
+			    // *** Perform form validation
+			    for (var i=0; i<$inputs.length; i++){
+			    	if($inputs[i].value == ""){
+			    		$('#formFeedbackContainer').html('<p>Please fill out every field in the request form.</p>');
+			    		formValid = 0;
+			    		break;
+			    	} else {
+			    		formValid = 1;
+			    	}
+			    }
+
+			    if(formValid == 1){
+			    
+			    	//alert('form valid');
+				    // *** serialize the data in the form
+				    var serializedData = $form.serialize();
+
+				    // *** let's disable the inputs for the duration of the ajax request
+				    $inputs.prop("disabled", true);
+
+				    // *** fire off the request to /process-form.php
+				    request = $.ajax({
+				        url: "process-form.php",
+				        type: "post",
+				        data: serializedData
+				    });
+
+				    // *** callback handler that will be called on success
+				    request.done(function (response, textStatus, jqXHR){
+				        $('#formFeedbackContainer').html('<p>'+response+'</p><p><a href="contact-us.html" class="button">Send Another Message</a></p>');
+				        $('#contactForm').hide();
+				        $inputs.prop("disabled", false);
+				    });
+				    
+				}
+				// *** prevent default posting of form
+				event.preventDefault();
+			});
+		});
+		</script>
+		
+	</head>
+	<body class="right-sidebar">
+
+		<!-- Header -->
+			<div id="header">
+
+				<!-- Inner -->
+					<div class="inner">
+						<header>
+							<h1><a href="/" id="logo">The South Carolina Aviation Medallion</a></h1>
+						</header>
+					</div>
+				
+				<!--#include virtual="includes/nav.html"-->
+
+			</div>
+			
+		<!-- Main -->
+			<div class="wrapper style1">
+
+				<div class="container">
+					<div class="row">
+						<div class="8u skel-cell-mainContent" id="content">
+							<article id="main">
+								<header>
+									<h2><a href="#">Contact Us</a></h2>
+									<span class="byline">Send a message and we'll get back to you as soon as possible.</span>
+								</header>
+								
+								<div id="formFeedbackContainer"></div>
+								<form method="post" action="#" id="contactForm">
+									<div class="row half">
+										<div class="6u">
+											<input name="name" placeholder=" Name" type="text" class="text" />
+										</div>
+										<div class="6u">
+											<input name="email" placeholder=" Email" type="text" class="text" />
+										</div>
+									</div>
+									<div class="row half">
+										<div class="12u">
+											<textarea name="message" placeholder=" Message (Maximum 100 Characters)" maxlength="100"></textarea>
+										</div>
+									</div>
+									<div class="row half">
+										<div class="12u">
+											<ul class="actions">
+												<li><a href="#" class="button" onClick="javascript:$('#contactForm').submit();">Send Message</a></li>
+											</ul>
+										</div>
+									</div>
+								</form>
+							</article>
+						</div>
+						<div class="4u" id="sidebar">
+							<hr class="first" />
+							<section>
+								<header>
+									<h3><a href="mailto:#">Site Administrator</a></h3>
+								</header>
+								<p>
+									Lee Logan<br />
+									123 Some Street<br />
+									Ridgeland, SC 29910<br />
+									555-555-5555<br />
+									<a href="#">lee.logan@scavmedallion.com</a>
+								</p>
+							
+							</section>
+						</div>
+					</div>
+					
+				</div>
+
+			</div>
+
+		<!--#include virtual="includes/footer.html"-->
+
+	</body>
+</html>

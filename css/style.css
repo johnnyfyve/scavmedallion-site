@@ -109,7 +109,7 @@
 	
 		a:hover
 		{
-			color: #ef8376;
+			color: #547f8c;
 			border-bottom-color: transparent;
 		}
 
@@ -156,7 +156,7 @@
 	
 		header .byline
 		{
-			margin-bottom: 2em;
+			margin-bottom: 1em;
 		}
 		
 	footer
@@ -415,10 +415,11 @@
 			form select,
 			form textarea
 			{
+				font-family:Optima, Helvetica, Arial, sans-serif;
 				-webkit-appearance: none;
 				display: block;
 				border: 0;
-				background: #ccc;
+				background: #eee;
 				width: 100%;
 			}
 
@@ -1009,7 +1010,7 @@
 	{
 		background: #fff;
 		margin: 0 0 2em 0;
-		padding: 6em 0 6em 0;
+		padding: 2em 0 6em 0;
 	}
 	
 		.wrapper.style1

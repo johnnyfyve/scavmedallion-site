@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="scamFonts.css">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 75% ; width: 75% ; }
+    </style>
+
+    <script src="./utilities.js"></script>
+
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC269Jwrl2SZacKeIAhVqST-AAbkDe572o&sensor=false"></script>
+    <!--script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script-->
+
+    <script>
+     /*****************************************************************
+       initialize()
+      *****************************************************************/
+      function initialize()
+      {
+        var myLatlng  = new google.maps.LatLng(32.4945000, -80.9903500); // 3J1 at Lee's Hangar
+
+        var mapOptions =  {
+                            center: myLatlng,
+                            zoom: 8,
+                            mapTypeId: google.maps.MapTypeId.HYBRID
+                          };
+          
+        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        var marker = new google.maps.Marker({
+                                              position: myLatlng,
+                                              map: map,
+                                              title: 'SCAM HQ!'
+                                           });
+
+        updateMap();
+        updateFlights();
+        updateSummary();
+      }
+ 
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+
+  <body>
+    <table border=1 cellpadding=0 cellspacing=0>
+      <tr class=tableHeader >
+        <td colspan=2>
+          Where is the SCAM?
+        </td>
+      </tr>
+      <tr>
+        <td valign=top>
+          <table>
+            <tr>
+              <td class=subtableHeader colspan=2>
+                Summary Statistics
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr class=summaryData>
+              <td>Flights</td>
+              <td width=60 id=summaryFlightCount>1,000</td>
+            </tr>
+            <tr class=summaryData>
+              <td>Miles</td>
+              <td id=summaryMiles></td>
+            </tr>
+            <tr class=summaryData>
+              <td>Airports</td>
+              <td id=summaryAirportCount></td>
+            </tr>
+            <tr class=summaryData>
+              <td>Countries</td>
+              <td id=summaryCountryCount></td>
+            </tr>
+            <tr class=summaryData>
+              <td>States</td>
+              <td id=summaryStateCount></td>
+            </tr>
+            <tr class=summaryData>
+              <td>Pilots</td>
+              <td id=summaryPilotCount></td>
+            </tr>
+            <tr>
+              <td>
+                &nbsp;
+              </td>
+            </tr>
+            <tr>
+              <td class=subtableHeader colspan=2>
+                Latest Flight
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Date
+              </td>
+              <td id=latestFltDate>
+                12 Aug 2013
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Origin
+              </td>
+              <td id=latestFltOrigin>
+                XXX
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Dest
+              </td>
+              <td id=latestFltDest>
+                YYY
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Pilot
+              </td>
+              <td id=latestFltPilot>
+                ---
+              </td>
+            </tr>
+            <tr>
+              <td>
+                &nbsp;
+              </td>
+            </tr>
+            <tr>
+              <td class=subtableHeader colspan=2>
+                Where is it now?
+              </td>              
+            </tr>
+            <tr>
+              <td>
+                Lat
+              </td>
+              <td>
+                XX.XXXXXXN
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Lon
+              </td>
+              <td>
+                XXX.XXXXXXW
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <!--button onclick="updateMap()">Update Map</button-->
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                Version
+              </td>
+              <td>
+                1.0.0.0
+              </td>
+            </tr>
+
+          </table>
+
+        <td >
+          <div id="map-canvas" style="width:800px;height:600px;"></div>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan=2>
+          <table width=100% border=1>
+            <tr>
+              <td colspan=6>
+                <table width=100% border=0>
+                  <tr>
+                    <td width=100>
+                    </td>
+                    <td class=subtableHeader>
+                      Last 5 Flights 
+                    </td>
+                    <td width=100 align=right>
+                      <button id=updateFlightsButton onclick="updateFlights()">Update</button>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td width=100>
+                Date
+              </td>
+              <td width=75>
+                Origin
+              </td>
+              <td width=75>
+                Dest
+              </td>
+              <td width=50>
+                Dist
+              </td>
+              <td width=100>
+                Pilot
+              </td>
+              <td>
+                Comments
+              </td>
+            </tr>
+            <tr>
+              <td id=date0>aa</td>
+              <td id=origin0>aa</td>
+              <td id=dest0>aa</td>
+              <td id=dur0>aa</td>
+              <td id=pilot0>aa</td>
+              <td id=comment0>aa</td>
+            </tr>
+            <tr>
+              <td id="date1">xx</td>
+              <td id=origin1>xx</td>
+              <td id=dest1>xx</td>
+              <td id=dur1>xx</td>
+              <td id=pilot1>xx</td>
+              <td id=comment1>xx</td>
+            </tr>
+            <tr>
+              <td id=date2>cc</td>
+              <td id=origin2>cc</td>
+              <td id=dest2>cc</td>
+              <td id=dur2>cc</td>
+              <td id=pilot2>cc</td>
+              <td id=comment2>cc</td>
+            </tr>
+            <tr>
+              <td id=date3>ww</td>
+              <td id=origin3>ww</td>
+              <td id=dest3>ww</td>
+              <td id=dur3>ww</td>
+              <td id=pilot3>ww</td>
+              <td id=comment3>ww</td>
+            </tr>
+            <tr>
+              <td id=date4>qq</td>
+              <td id=origin4>qq</td>
+              <td id=dest4>qq</td>
+              <td id=dur4>qq</td>
+              <td id=pilot4>qq</td>
+              <td id=comment4>qq</td>
+            </tr>
+
+          </table>
+           
+        </td>
+      </tr>
+
+      <tr>
+        <td id=statusCell colspan=6>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
