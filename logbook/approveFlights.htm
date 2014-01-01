@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="scamFonts.css">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 75% ; width: 75% ; }
+    </style>
+
+    <script src="./utilities.js"></script>
+
+    <script>
+     function initialize()
+     {
+       clearTable();
+       getFltsForApproval();
+     }
+
+    </script>
+  </head>
+
+  <body onload="initialize()">
+    <table id=flightTable width=1000 border=1 cellpadding=1 cellspacing=0 align=center>
+      <tr class=tableHeader >
+        <td colspan=10>
+          Approve Flights
+        </td>
+      </tr>
+      <tr class=headingC>
+        <td width=50>
+          ID
+        </td>
+        <td width=100>
+          Date
+        </td>
+        <td width=75>
+          Origin
+        </td>
+        <td width=75>
+          Dest
+        </td>
+        <td width=50>
+          Dist
+        </td>
+        <td width=100>
+          Pilot
+        </td>
+        <td width=100>
+          Passenger
+        </td>
+        <td>
+          Comments
+        </td>
+        <td width=50>
+          Valid
+        </td>
+        <td width=50>
+          Show
+        </td>
+
+
+      </tr>
+
+      <tr>
+              <td id=date0 class=fltslistC >aa</td>
+              <td id=origin0 class=fltslistC >aa</td>
+              <td id=dest0 class=fltslistC >aa</td>
+              <td id=dur0 class=fltslistC >aa</td>
+              <td id=pilot0 class=fltslistC >aa</td>
+              <td id=comment0 class=fltslistL >aa</td>
+            </tr>
+            <tr>
+              <td id=date1 class=fltslistC >xx</td>
+              <td id=origin1 class=fltslistC >xx</td>
+              <td id=dest1 class=fltslistC >xx</td>
+              <td id=dur1 class=fltslistC >xx</td>
+              <td id=pilot1 class=fltslistC >xx</td>
+              <td id=comment1 class=fltslistL >xx</td>
+            </tr>
+            <tr>
+              <td id=date2 class=fltslistC >cc</td>
+              <td id=origin2 class=fltslistC >cc</td>
+              <td id=dest2 class=fltslistC >cc</td>
+              <td id=dur2 class=fltslistC >cc</td>
+              <td id=pilot2 class=fltslistC >cc</td>
+              <td id=comment2 class=fltslistL >cc</td>
+            </tr>
+            <tr>
+              <td id=date3 class=fltslistC >ww</td>
+              <td id=origin3 class=fltslistC >ww</td>
+              <td id=dest3 class=fltslistC >ww</td>
+              <td id=dur3 class=fltslistC >ww</td>
+              <td id=pilot3 class=fltslistC >ww</td>
+              <td id=comment3 class=fltslistL >ww</td>
+            </tr>
+            <tr>
+              <td id=date4 class=fltslistC >qq</td>
+              <td id=origin4 class=fltslistC >qq</td>
+              <td id=dest4 class=fltslistC >qq</td>
+              <td id=dur4 class=fltslistC >qq</td>
+              <td id=pilot4 class=fltslistC >qq</td>
+              <td id=comment4 class=fltslistL >qq</td>
+            </tr>
+
+    </table>
+  </body>
+</html>

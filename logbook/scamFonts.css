@@ -1,0 +1,36 @@
+body
+	{
+	font-family:Arial;
+	}
+
+h1
+	{
+	font-size:40px;
+	text-align:center;
+	line-height:80%;
+	}
+
+h3 
+	{
+	font-size:60px; 
+	text-align:center;
+	}
+h4
+	{
+	font-size:60px; 
+	text-align:center;
+	}
+
+h2
+	{ 
+	font-size:15px; 
+	color:blue; 
+	text-align:center;
+	}
+
+.copyrightFont {font-size:10; text-align: center; color: blue;}
+
+.tableHeader {font-size:40px; text-align: center; color: blue; font-weight:bold;}
+.subtableHeader {font-size:18px; text-align: center; color: blue; font-weight:bold; font-style: italic;}
+.summaryData {font-size: 12px; text-align: right; color: black; }
+
